@@ -11,12 +11,14 @@ app.get('/', function(req, res) {
   res.render('index', { title: 'Qui prend quoi ?' });
 });
 
+
 app.post('/party', function(req, res) {
   axios
     .post(`${process.env.API_URL}/party`, req.body)
     .then(({ data }) => res.redirect(`/party/${data._id}`))
     .catch((err) => res.send(err));
 });
+
 
 app.get('/party/:id', function(req, res) {
   axios
@@ -30,5 +32,24 @@ app.get('/party/:id', function(req, res) {
   )
   .catch((err) => console.log(err));
 });
+
+
+app.post('/party/:id/items', function(req, res) {
+  console.log('params sent', req.body);
+  axios
+    .post(`${process.env.API_URL}/party/${req.params.id}/items`, req.body)
+    .then(() => res.redirect(`/party/${req.params.id}`))
+    .catch((err) => res.send(err));
+});
+
+
+app.post('/party/:id/items/:idItem', function(req, res) {
+  console.log('items sent', req.body);
+  axios
+    .delete(`${process.env.API_URL}/party/${req.params.id}/items/${req.params.idItem}`)
+    .then(() => res.redirect(`/party/${req.params.id}`))
+    .catch((err) => res.send(err));
+});
+
 
 app.listen(process.env.PORT, () => console.log(`Front app listening on port ${process.env.PORT}!`));
