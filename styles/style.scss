@@ -2,10 +2,97 @@
 @import 'config/medias.scss';
 @import 'blocs/newParty.scss';
 
-form {
-  border: 1px solid blue;
+* {
+  box-sizing: border-box;
+}
 
-  div {
-    border: 1px solid red;
+body {
+  padding: 2rem;
+  font-family: sans-serif;
+}
+
+h1 {
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  border-bottom: 1px solid #999999;
+  line-height: 2;
+}
+
+h2 {
+  text-transform: uppercase;
+  margin: 3rem 0 1rem;
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+h3 {
+  margin-bottom: 2rem;
+}
+
+h1, h2, h3 {
+  text-align: center;
+}
+
+span {
+  text-transform: capitalize;
+}
+
+label {
+  line-height: 2;
+}
+
+input {
+  border: 1px solid #ddd;
+  display: block;
+  padding-left: 1rem;
+  width: 15rem;
+}
+
+button {
+  border: 1.2px solid #4D31F3;
+  width: 8rem;
+  height: 2.7rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  background-color: transparent;
+  font-size: 1rem;
+  color: #4D31F3;
+  transition: background-position .3s cubic-bezier(0.19, 1, 0.22, 1) .1s, color .5s ease 0s, background-color .5s ease;
+  background-size: 200% 100%;	
+  background-image: linear-gradient(to right, transparent 50%,#4D31F3 50%);
+  border-radius: 30px;
+
+  &:hover {
+    background-color:#4D31F3;
+    color: #fff;
+    background-position: -100% 100%;
+  }  
+
+  &.suppr_item {
+    width: 2rem;
+    height: 2rem;
+    display: initial !important;
+  }
+}
+
+ul {
+  form {
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #ddd;
+    margin-bottom: 2rem;
+  }
+
+  li {
+    text-indent: 2rem;
+  }
+}
+
+.party_container {
+  button {
+    display: block;
+    margin: 1rem auto;
   }
 }

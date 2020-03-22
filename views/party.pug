@@ -3,23 +3,25 @@ script.
   party = !{JSON.stringify(party)}
 h1 Qui prend quoi ?
 h2= party.name
-h3 Créé par #{party.author}
-label(for="url") Partagez l'événement
-input(id="url" value=`${url}` data-clipboard=`${url}` data-share-url=`${url}` data-share-title=`${party.name}` data-share-text=`${party.author} vous invite a rejoindre l'événement ${party.name}`)
+h3 Événement créé par <span>#{party.author}</span>
 
-ul
-  each item in party.items
-    li= item.name
-    form(method="post" action=`/party/${party._id}/items/${item._id}`)
-      button(type="submit") supprimer
+div.party_container
 
-      
-form(method="post" action=`/party/${party._id}/items`)
-  div
-    label(for="name") Nom de l'item
-    input(name="name" id="name" required minlength="3" placeholder="champagne")
-  div
-    label(for="author" required) Votre pseudo
-    input(name="author" id="author" required minlength="3" placeholder="Louis")
-  button(type="submit") Ajouter
+  form(method="post" action=`/party/${party._id}/items`)
+    div.newParty__fields
+      label(for="name") Nom de l'item
+      input(name="name" id="name" required minlength="3" placeholder="champagne")
+      label(for="user") Votre pseudo
+      input(name="user" id="user" required minlength="3" placeholder="Louis")
+    button(type="submit") Ajouter
 
+  div.newParty__fields.share
+    label(for="url") Partagez l'événement
+    input(id="url" value=`${url}` data-clipboard=`${url}` data-share-url=`${url}` data-share-title=`${party.name}` data-share-text=`${party.author} vous invite a rejoindre l'événement ${party.name}`)
+
+  ul
+    each item in party.items
+      form(method="post" action=`/party/${party._id}/items/${item._id}`)
+        div
+          button(type="submit").suppr_item x
+          li #{item.name}
