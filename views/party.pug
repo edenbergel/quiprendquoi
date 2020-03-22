@@ -13,7 +13,7 @@ div.party_container
       input(name="name" id="name" required minlength="3" placeholder="champagne")
       label(for="user") Votre pseudo
       input(name="user" id="user" required minlength="3" placeholder="Louis")
-    button(type="submit") Ajouter
+    button(type="submit" data-notify) Ajouter
 
   div.newParty__fields.share
     label(for="url") Partagez l'événement
@@ -23,5 +23,5 @@ div.party_container
     each item in party.items
       form(method="post" action=`/party/${party._id}/items/${item._id}`)
         div
-          button(type="submit").suppr_item x
+          button(type="submit" data-notify-item=`${item.name}`).suppr_item x
           li #{item.name}
