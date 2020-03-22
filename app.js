@@ -37,7 +37,6 @@ app.get('/party/:id', function(req, res) {
 
 
 app.post('/party/:id/items', function(req, res) {
-  console.log('params sent', req.body);
   axios
     .post(`${process.env.API_URL}/party/${req.params.id}/items`, req.body)
     .then(() => res.redirect(`/party/${req.params.id}`))
@@ -46,7 +45,6 @@ app.post('/party/:id/items', function(req, res) {
 
 
 app.post('/party/:id/items/:idItem', function(req, res) {
-  console.log('items sent', req.body);
   axios
     .delete(`${process.env.API_URL}/party/${req.params.id}/items/${req.params.idItem}`)
     .then(() => res.redirect(`/party/${req.params.id}`))
